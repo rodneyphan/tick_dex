@@ -51,8 +51,8 @@ List<Disease> diseasesList = [
     Disease( "Ehrlichiosis", "2093", "https://www.cdc.gov/ehrlichiosis/symptoms/index.html" ),
     Disease( "Tularemia", "274", "https://www.mayoclinic.org/diseases-conditions/tularemia/symptoms-causes/syc-20378635" ),
     Disease( "Q Fever", "179", "https://www.cdc.gov/qfever/index.html, https://www.mayoclinic.org/diseases-conditions/q-fever/symptoms-causes/syc-20352995"),
+    Disease( "Powassan Encephalitis", "43", "https://www.cdc.gov/powassan/index.html" ),  
     Disease( "Tick-borne Relapsing Fever", "23", "https://doh.wa.gov/you-and-your-family/illness-and-disease-z/tick-borne-relapsing-fever" ),
-    Disease( "Powassan Encephalitis", "43", "https://www.cdc.gov/powassan/index.html" ),
     Disease( "Colorado Tick Fever", "6", "https://www.cdc.gov/coloradotickfever/index.html" ),
     Disease( "Southern Tick Rash Illness", "Not Reported", "https://www.floridahealth.gov/diseases-and-conditions/southern-tick-rash-illness/index.html")
   ];
