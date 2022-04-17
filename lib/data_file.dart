@@ -16,8 +16,8 @@ class Tick {
   final String commonName;
   final String scientificName;
   final String diseases;
-  final String picture;
-  Tick( this.commonName, this.scientificName, this.diseases, this.picture );
+  final String picName;
+  Tick( this.commonName, this.scientificName, this.diseases, this.picName );
   });
 }
 
@@ -38,22 +38,24 @@ class Tick {
 
 class Disease {
   String disName;
-  int disCases;
+  String disCasesPerYear;
   String disURL;
-  Disease( this.disName, this.disCases, this.disURL );
+  Disease( this.disName, this.disCasesPerYear, this.disURL );
 }
 
 List<Disease> diseasesList = [
-    Disease( "Lyme Disease", 34945, "https://www.cdc.gov/niosh/topics/tick-borne/default.html" ),
-    Disease( "Anaplasmosis", 5655, "https://www.health.state.mn.us/diseases/anaplasmosis/basics.html" ),
-    Disease( "Rocky Mountain Spotted Fever", 5207, "https://www.cdc.gov/rmsf/stats/index.html" ),
-    Disease( "Babesiosis", 2420, "https://www.cdc.gov/parasites/babesiosis/index.html" ),
-    Disease( "Ehrlichiosis", 2093, "https://www.cdc.gov/ehrlichiosis/symptoms/index.html" ),
-    Disease( "Tularemia", 274, "https://www.mayoclinic.org/diseases-conditions/tularemia/symptoms-causes/syc-20378635" ),
-    Disease( "Q Fever", 179, "https://www.cdc.gov/qfever/index.html, https://www.mayoclinic.org/diseases-conditions/q-fever/symptoms-causes/syc-20352995"),
-    Disease( "Tick-borne Relapsing Fever", 23, "https://doh.wa.gov/you-and-your-family/illness-and-disease-z/tick-borne-relapsing-fever" ),
-    Disease( "Powassan encephalitis", 43, "https://www.cdc.gov/powassan/index.html" ),
-    Disease( "Colorado tick fever", 6, "https://www.cdc.gov/coloradotickfever/index.html" )
+    Disease( "Lyme Disease", "34945", "https://www.cdc.gov/niosh/topics/tick-borne/default.html" ),
+    Disease( "Anaplasmosis", "5655", "https://www.health.state.mn.us/diseases/anaplasmosis/basics.html" ),
+    Disease( "Rocky Mountain Spotted Fever", "5207", "https://www.cdc.gov/rmsf/stats/index.html" ),
+    Disease( "Babesiosis", "2420", "https://www.cdc.gov/parasites/babesiosis/index.html" ),
+    Disease( "Ehrlichiosis", "2093", "https://www.cdc.gov/ehrlichiosis/symptoms/index.html" ),
+    Disease( "Tularemia", "274", "https://www.mayoclinic.org/diseases-conditions/tularemia/symptoms-causes/syc-20378635" ),
+    Disease( "Q Fever", "179", "https://www.cdc.gov/qfever/index.html, https://www.mayoclinic.org/diseases-conditions/q-fever/symptoms-causes/syc-20352995"),
+    Disease( "Tick-borne Relapsing Fever", "23", "https://doh.wa.gov/you-and-your-family/illness-and-disease-z/tick-borne-relapsing-fever" ),
+    Disease( "Powassan Encephalitis", "43", "https://www.cdc.gov/powassan/index.html" ),
+    Disease( "Colorado Tick Fever", "6", "https://www.cdc.gov/coloradotickfever/index.html" ),
+    Disease( "Southern Tick Rash Illness", "Not Reported", "https://www.floridahealth.gov/diseases-and-conditions/southern-tick-rash-illness/index.html")
   ];
+
 
 // ------------- End of data_file.dart ---------------
