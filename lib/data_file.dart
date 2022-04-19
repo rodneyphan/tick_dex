@@ -7,7 +7,7 @@ var myNavRoutes = <String, WidgetBuilder>
   'first': (context) => const Introduction(),
   'second': (context) => const ChooseATick(),
   'third': (context) => const Geolocation(),
-  'fourth': (context) => const DiseasesAndRisks()
+  'fourth': (context) => const DiseaseListDisplay()
 };
 
 String appTitle = 'Tick-Dex';
