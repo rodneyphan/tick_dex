@@ -30,6 +30,10 @@ dependencies:
   firebase_core: ^1.14.0
   cloud_firestore: ^3.1.11
   cloud_firestore_web: ^2.6.11
+  geolocator: ^8.2.0
+  baseflow_plugin_template:
+    git:
+      url: https://github.com/Baseflow/baseflow_plugin_template.git
   flutter:
     sdk: flutter
 
@@ -63,6 +67,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - packages/baseflow_plugin_template/logo.png
+    - packages/baseflow_plugin_template/poweredByBaseflow.png
     - assets/
   #   - images/a_dot_ham.jpeg
 

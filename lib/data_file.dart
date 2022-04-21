@@ -3,13 +3,13 @@
 import 'package:flutter/cupertino.dart';
 
 import 'p1_introduction.dart';
+import 'geolocator.dart';
 import 'p4_disease_list.dart';
 
-var myNavRoutes = <String, WidgetBuilder>
-{
+var myNavRoutes = <String, WidgetBuilder>{
   'first': (context) => const Introduction(),
   //'second': (context) => const ChooseATick(),
-  //'third': (context) => const Geolocation(),
+  'third': (context) => const GeolocatorWidget(),
   'fourth': (context) => const DiseaseListDisplay()
 };
 
@@ -22,11 +22,12 @@ class Tick {
   final String picName;
 
   Tick(this.commonName, this.scientificName, this.diseases, this.picName);
-
 }
 
 List<Tick> tickList = [
-  Tick("Deer or Blacklegged tick", "Ixodes scapularis",
+  Tick(
+      "Deer or Blacklegged tick",
+      "Ixodes scapularis",
       "Lyme Disease, Anaplasmosis, Babesiosis, Powassan Encephalitis",
       "deer_tick"),
   Tick("American dog tick", "Dermacentor variabilis ",
@@ -35,20 +36,30 @@ List<Tick> tickList = [
       "Rocky Mountain Spotted Fever, Q Fever", "brown_dog_tick"),
   Tick("Groundhog tick", "Ixodes cookei", "Powassan Encephalitis",
       "groundhog_tick"),
-  Tick("Western Blacklegged tick", "Ixodes pacificus",
+  Tick(
+      "Western Blacklegged tick",
+      "Ixodes pacificus",
       "Borreliosis (a relapsing fever), Ehrlichiosis, Anaplasmosis",
       "west_blackleg_tick"),
-  Tick("Pacific Coast tick", "Dermacentor occidentalis",
+  Tick(
+      "Pacific Coast tick",
+      "Dermacentor occidentalis",
       "Rocky Mountain Spotted Fever, Colorado Tick Fever, Tularemia, Q Fever",
       " "),
-  Tick("Lone Star tick", "Amblyomma americanum",
+  Tick(
+      "Lone Star tick",
+      "Amblyomma americanum",
       "Southern Tick Rash Illness, Heartland Virus, Tularemia, Ehrlichiosis, Q Fever",
       "lone_star_tick"),
-  Tick("Rocky Mountain Wood tick", " ",
+  Tick(
+      "Rocky Mountain Wood tick",
+      " ",
       "Rocky Mountain Spotted Fever, Colorado Tick Fever, Tularemia, Q Fever",
       "rocky_mtn_wood_tick"),
   Tick("Cayenne tick", " ", "Rocky Mountain Spotted Fever", "cayenne_tick"),
-  Tick("Ixodes Ticks (multiple species)", "Ixodes xxxxxx",
+  Tick(
+      "Ixodes Ticks (multiple species)",
+      "Ixodes xxxxxx",
       "Lyme Disease, Babesiosis, Powassan Encephalitis, Anaplasmosis",
       "ixodes_ticks"),
   Tick("African tick", " ", "Tick-borne Relapsing Fever", "african_tick"),
@@ -87,6 +98,5 @@ List<Disease> diseasesList = [
   Disease("Southern Tick Rash Illness", "Not Reported",
       "https://www.floridahealth.gov/diseases-and-conditions/southern-tick-rash-illness/index.html")
 ];
-
 
 // ------------- End of data_file.dart ---------------
