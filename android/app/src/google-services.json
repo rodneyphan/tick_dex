@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "211150956458",
+    "project_id": "tick-2ff7f",
+    "storage_bucket": "tick-2ff7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211150956458:android:9b8bef7d0d8957c8f4add3",
+        "android_client_info": {
+          "package_name": "edu.mercer.muse.tick_dex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211150956458-99c7ak85agkfs6agc31jlsau8b2s9iem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr7l0O4FEjZBzmW9nFjbe-m2W-JldyN2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211150956458-99c7ak85agkfs6agc31jlsau8b2s9iem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
