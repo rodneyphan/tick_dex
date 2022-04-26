@@ -54,7 +54,7 @@ class DisplayTickList extends StatelessWidget {
             child: Container(width: 30, height: 30,
             padding: const EdgeInsets.symmetric(vertical: 4.0), alignment: Alignment.center,
             child: CircleAvatar( radius: 30.0, backgroundColor: Colors.brown,
-              child: ClipRect( child: Image.asset( 'assets/images/' + listOfTicks[index].picName ), ),
+              child: ClipRect( child: Image.asset( 'images/' + listOfTicks[index].picName + '.png' ), ),
               ),
             ),
           ),
