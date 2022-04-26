@@ -31,7 +31,7 @@ class IntroductionState extends State<Introduction> {
         children: <Widget>[
           Padding( padding: const EdgeInsets.all(8.0),
             child: SizedBox ( width: 500.0, height: 400.0,
-            child: Image.asset( 'assets/images/finger_with4ticks.png' ),
+            child: Image.asset( 'images/finger_with4ticks.png' ),
             ),
           ),
           const Text( "\nEach year, 30,000 to 40,000 people in the US will contract Lyme's disease, and", textScaleFactor: 1.5),
