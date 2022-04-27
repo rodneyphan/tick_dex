@@ -29,7 +29,7 @@ class DiseaseListState extends State<DiseaseListDisplay> {
 class DisplayDiseaseList extends StatelessWidget {
   DisplayDiseaseList({Key? key}) : super(key: key);
 
-  final List<Disease> listOfDiseases = diseasesList;
+  final List<Disease> listOfDiseases = diseaseList;
 
   @override
   Widget build(BuildContext context) {

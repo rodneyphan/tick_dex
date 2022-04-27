@@ -25,6 +25,7 @@ class IntroductionState extends State<Introduction> {
 
   Widget displayIntro() {
     return Center(
+        child: SingleChildScrollView(
       child: Column(
         children: <Widget>[
           Padding(
@@ -89,13 +90,29 @@ class IntroductionState extends State<Introduction> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: 280,
+              child: ElevatedButton(
+                child: const Text('Report Tick Location'),
+                onPressed: () {
+                  _navToScreen3(context);
+                },
+              ),
+            ),
+          ),
         ],
       ),
-    );
+    ));
   } // end of _displayImageBody
 
   void _navToScreen2(BuildContext context) async {
     await Navigator.pushNamed(context, 'second');
+  }
+
+  void _navToScreen3(BuildContext context) async {
+    await Navigator.pushNamed(context, 'third');
   }
 
   void _navToScreen4(BuildContext context) async {

@@ -69,7 +69,7 @@ flutter:
   assets:
     - packages/baseflow_plugin_template/logo.png
     - packages/baseflow_plugin_template/poweredByBaseflow.png
-    - assets/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

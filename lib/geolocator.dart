@@ -4,6 +4,8 @@ import 'dart:io' show Platform;
 import 'package:baseflow_plugin_template/baseflow_plugin_template.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'data_model.dart';
 
 /// Defines the main theme color.
 final MaterialColor themeMaterialColor =
@@ -32,6 +34,8 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
   static const String _kPermissionDeniedForeverMessage =
       'Permission denied forever.';
   static const String _kPermissionGrantedMessage = 'Permission granted.';
+
+  final mainReference = FirebaseFirestore.instance.collection("found").doc();
 
   final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
   final List<_PositionItem> _positionItems = <_PositionItem>[];
@@ -169,14 +173,19 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
                     child: const Icon(Icons.bookmark),
                     onPressed: _getLastKnownPosition,
                   ),
+                  sizedBox,
+                  FloatingActionButton(
+                    child: const Icon(Icons.add_box_outlined),
+                    onPressed: _postData,
+                  ),
                 ],
               ),
             ),
           )
         ],
-      appBarActions: [
-        _createActions()
-      ]);
+        appBarActions: [
+          _createActions()
+        ]);
   }
 
   Future<void> _getCurrentPosition() async {
@@ -350,6 +359,27 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
         'No last known position available',
       );
     }
+  }
+
+  void _postData() async {
+    final hasPermission = await _handlePermission();
+
+    if (!hasPermission) {
+      return;
+    }
+
+    final position = await _geolocatorPlatform.getCurrentPosition();
+
+    Timestamp time = Timestamp.now();
+
+    FoundTick _tick = FoundTick(0,"tick",GeoPoint(position.latitude,position.longitude),time);
+
+    mainReference.set(_tick.toJson());
+
+    _updatePositionList(
+      _PositionItemType.log,
+      'Tick Reported To Database',
+    );
   }
 
   void _getLocationAccuracy() async {
