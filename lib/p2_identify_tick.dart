@@ -50,7 +50,7 @@ class DisplayTickList extends StatelessWidget {
 
   Widget buildListBody(BuildContext context, int index) {
     int tappedIndex = -1;
-    String imageLocation = 'images/' + listOfTicks[index].picName + '.png';
+    String imageLocation = 'assets/images/' + listOfTicks[index].picName + '.png';
 
     return
       ListTile(
@@ -163,7 +163,7 @@ class HeroPage extends StatelessWidget {
         body: GestureDetector( onTap: () { Navigator.pop( context ); },
           child: Hero( tag: "enlarged-image",
             child: Container( width: double.infinity, height: 450.0,
-              alignment: Alignment.topCenter,
+              alignment: Alignment.center,
               child: Column( mainAxisSize: MainAxisSize.min, children: <Widget> [
                 heroImage( heroTick ),
                 const Text( "\nClick image to return to tick list" )
@@ -176,9 +176,9 @@ class HeroPage extends StatelessWidget {
   }
 
   Widget heroImage( String heroTick ) {
-    String imageLocation = 'images/' + heroTick + '.png';
+    String imageLocation = 'assets/images/' + heroTick + '.png';
     return Container ( width: double.infinity, height: 400.0,
-      alignment: Alignment.topCenter,
+      alignment: Alignment.bottomCenter,
       child: Image.asset( imageLocation )
       );
   }
