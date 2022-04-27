@@ -1,17 +1,19 @@
 // data_file.dart
 
 import 'package:flutter/cupertino.dart';
-import 'package:tick_dex/p2_identify_tick.dart';
 import 'p1_introduction.dart';
+import 'p2_identify_tick.dart';
 import 'geolocator.dart';
 import 'p4_disease_list.dart';
+import 'p5_risk_assessment.dart';
 
 var myNavRoutes = <String, WidgetBuilder>
 {
   'first': (context) => const  Introduction(),
   'second' : (context) => const TickListDisplay(),
   'third': (context) => const GeolocatorWidget(),
-  'fourth': (context) => const DiseaseListDisplay()
+  'fourth': (context) => const DiseaseListDisplay(),
+  'fifth': (context) => const RiskAssessment()
 };
 
 String appTitle = 'Tick-Dex';
@@ -24,6 +26,7 @@ class Tick {
   Tick( this.commonName, this.scientificName, this.diseases, this.picName );
 }
 
+// Data was hard-coded because we were concerned that the app could not be used "out in the field" such as when hiker's might use it, or where cell reception was poor
   List<Tick> tickList = [
     Tick( "Deer or Blacklegged tick", "Ixodes scapularis", "Lyme's Disease, Anaplasmosis, Babesiosis, Powassan Encephalitis", "deer_tick"),
     Tick( "American dog tick", "Dermacentor variabilis ", "Rocky Mountain Spotted Fever, Tularemia", "american_dog_tick" ),
@@ -47,7 +50,8 @@ class Disease {
   Disease(this.disName, this.disCasesPerYear, this.disURL);
 }
 
-  List<Disease> diseaseList = [
+// Data was hard-coded because we were concerned that the app could not be used "out in the field" such as when hiker's might use it, or where cell reception was poor
+List<Disease> diseaseList = [
     Disease("Lyme's Disease", "34,945", "https://www.cdc.gov/niosh/topics/lyme/"),
     Disease("Anaplasmosis", "5,655", "https://www.health.state.mn.us/diseases/anaplasmosis/basics.html"),
     Disease("Rocky Mountain Spotted Fever", "5,207", "https://www.cdc.gov/rmsf/stats/index.html"),
