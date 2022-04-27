@@ -60,7 +60,7 @@ class RiskAssessState extends State<RiskAssessment> {
                 children: <Widget>[
                   Padding( padding: const EdgeInsets.all(8.0),
                     child: RichText (
-                      text: const TextSpan( style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
+                      text: TextSpan( style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
                       children: <TextSpan>[
                         TextSpan(  text: "So you have encountered a " + tickList[tickIndex].commonName + "   " ) ],
                           ),
@@ -72,7 +72,7 @@ class RiskAssessState extends State<RiskAssessment> {
               ),
               Padding( padding: const EdgeInsets.all(8.0),
                 child: RichText (
-                text: const TextSpan( style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
+                text: const TextSpan( style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
                   children: <TextSpan>[
                     TextSpan( text: "\nand you believe it was a " + tickSexStage ),
                     TextSpan( text: "And this app geolocated your tick to a " + areaRisk + " area of the country for Lyme's Disease.\n" ),
