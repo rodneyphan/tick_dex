@@ -90,18 +90,6 @@ class IntroductionState extends State<Introduction> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: 280,
-              child: ElevatedButton(
-                child: const Text('Report Tick Location'),
-                onPressed: () {
-                  _navToScreen3(context);
-                },
-              ),
-            ),
-          ),
         ],
       ),
     ));
@@ -111,14 +99,9 @@ class IntroductionState extends State<Introduction> {
     await Navigator.pushNamed(context, 'second');
   }
 
-  void _navToScreen3(BuildContext context) async {
-    await Navigator.pushNamed(context, 'third');
-  }
-
   void _navToScreen4(BuildContext context) async {
     await Navigator.pushNamed(context, 'fourth');
   }
-  
 } // end of displayIntro
 
 // --- end of p1_introduction.dart

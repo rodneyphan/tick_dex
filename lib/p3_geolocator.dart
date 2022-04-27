@@ -1,16 +1,21 @@
 import 'dart:async';
 import 'dart:io' show Platform;
-
 import 'package:baseflow_plugin_template/baseflow_plugin_template.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'data_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Defines the main theme color.
 final MaterialColor themeMaterialColor =
     BaseflowPluginExample.createMaterialColor(
         const Color.fromRGBO(48, 49, 60, 1));
+
+const String _indexPrefsKey = 'index_key';
+const String _stagePrefsKey = 'stage_key';
+int tickIndex = 0;
+String tickType = 'tick';
 
 /// Example [Widget] showing the functionalities of the geolocator plugin
 class GeolocatorWidget extends StatefulWidget {
@@ -46,6 +51,7 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
   @override
   void initState() {
     super.initState();
+    _getValues();
     _toggleServiceStatusStream();
   }
 
@@ -167,11 +173,6 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
                   FloatingActionButton(
                     child: const Icon(Icons.my_location),
                     onPressed: _getCurrentPosition,
-                  ),
-                  sizedBox,
-                  FloatingActionButton(
-                    child: const Icon(Icons.bookmark),
-                    onPressed: _getLastKnownPosition,
                   ),
                   sizedBox,
                   FloatingActionButton(
@@ -346,21 +347,6 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
     super.dispose();
   }
 
-  void _getLastKnownPosition() async {
-    final position = await _geolocatorPlatform.getLastKnownPosition();
-    if (position != null) {
-      _updatePositionList(
-        _PositionItemType.position,
-        position.toString(),
-      );
-    } else {
-      _updatePositionList(
-        _PositionItemType.log,
-        'No last known position available',
-      );
-    }
-  }
-
   void _postData() async {
     final hasPermission = await _handlePermission();
 
@@ -372,7 +358,8 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
 
     Timestamp time = Timestamp.now();
 
-    FoundTick _tick = FoundTick(0,"tick",GeoPoint(position.latitude,position.longitude),time);
+    FoundTick _tick = FoundTick(tickIndex, tickType,
+        GeoPoint(position.latitude, position.longitude), time);
 
     mainReference.set(_tick.toJson());
 
@@ -380,6 +367,11 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
       _PositionItemType.log,
       'Tick Reported To Database',
     );
+    _navToScreen5(context);
+  }
+
+  void _navToScreen5(BuildContext context) async {
+    await Navigator.pushNamed(context, 'fifth');
   }
 
   void _getLocationAccuracy() async {
@@ -439,6 +431,12 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
       _PositionItemType.log,
       displayValue,
     );
+  }
+
+  Future<void> _getValues() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    tickIndex = prefs.getInt(_indexPrefsKey) ?? 0;
+    tickType = prefs.getString(_stagePrefsKey) ?? "tick";
   }
 }
 
