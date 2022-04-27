@@ -16,7 +16,7 @@ class RiskAssessment extends StatefulWidget {
 class RiskAssessState extends State<RiskAssessment> {
   final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
   int tickIndex = 0; //  just for initialization
-  String tickSexStage = 'tick'; //  just for initialization
+  String tickSexStage = 'male'; //  just for initialization
   bool highRiskArea = false; //  just for initialization
   String areaRisk = 'low-risk'; //  just for initialization
   bool burrowedIn = false; //  just for initialization
@@ -62,49 +62,59 @@ class RiskAssessState extends State<RiskAssessment> {
                     child: RichText (
                       text: TextSpan( style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
                       children: <TextSpan>[
-                        TextSpan(  text: "So you have encountered a " + tickList[tickIndex].commonName + "   " ) ],
+                        TextSpan(  text: "  So you have encountered a " + tickList[tickIndex].commonName + "   " ) ],
                           ),
                       ),
                     ),
                   SizedBox( width: 100, height: 100,
-                      child: Image.asset( "assets/images/" + tickList[tickIndex].picName + ".png")),
+                      child: Image.asset( "images/" + tickList[tickIndex].picName + ".png")),
                 ],
               ),
               Padding( padding: const EdgeInsets.all(8.0),
                 child: RichText (
-                text: const TextSpan( style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
+                text: TextSpan( style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
                   children: <TextSpan>[
-                    TextSpan( text: "\nand you believe it was a " + tickSexStage ),
-                    TextSpan( text: "And this app geolocated your tick to a " + areaRisk + " area of the country for Lyme's Disease.\n" ),
+                    TextSpan( text: "\nand you believe it was a " + tickSexStage + " tick.\n\n"),
+                    TextSpan( text: "Also this app geolocated your tick to a " + areaRisk + " area of the country for Lyme's Disease.\n" ),
                     ],
                   ),
                 ),
               ),
               const BurrowedCheckBox(),
               Padding( padding: const EdgeInsets.all(8.0),
-                child: SizedBox( width: 250,
+                child: SizedBox( width: 300,
                   child: ElevatedButton(
                     style: ButtonStyle( backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen)),
                     child: const Text( 'Click to Continue to your assessment...',
                       style: TextStyle(color: Colors.brown), ),
-                    onPressed: () { assessTheOverallRisk(context, burrowedIn); },
+                    onPressed: () { setState( ) { displayOverallRisk(); } }
                   ),
                 ),
               ),
-              Row( children: <Widget>[
-                const Text("So you, or a loved one, has"),
-                burrowedIn ? const Text(' ') : const Text('not '),
-                const Text("had a tick burrow it's head into the skin.\n"),
-              ],
-              ),
-              Text("The assessment of this app is that your overall risk of obtaining a tick-borne disease is " +
-                  overRisk + " based on inputed variables."),
-              const Text(
-                  "Your overall risk of dying from a tick-borne illness is extremely small. "),
             ],
-          )),
+          ),
+        ),
     );
   }
+
+  Widget displayOverallRisk() {
+
+    final String overRisk = assessTheOverallRisk(context, burrowedIn);
+    return
+      Padding( padding: const EdgeInsets.all(8.0),
+        child: RichText (
+          text: TextSpan( style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
+          children: <TextSpan>[
+            const TextSpan( text: "So you, or a loved one, has" ),
+            burrowedIn? const TextSpan( text: " " ) : const TextSpan( text: " not " ),
+            const TextSpan( text: "had a tick burrow it's head into the skin.\n"),
+            TextSpan( text: "The assessment of this app is that your overall risk of obtaining a tick-borne disease is " +
+            overRisk + " based on inputed variables.   Your overall risk of dying from a tick-borne illness is extremely small. "),
+          ],
+        ),
+      ),
+    );
+}
 
   String assessTheOverallRisk(context, bool burrowedIn) {
     final String overallRisk;
@@ -152,14 +162,17 @@ class BurrowedCheckBoxState extends State<BurrowedCheckBox> {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Row(
-        children: <Widget>[
-          const Text(
-            "Did the tick burrow into the skin? Check if YES  ",
-            textScaleFactor: 2.0,
+      Row( children: <Widget>[
+        Padding( padding: const EdgeInsets.all(8.0),
+          child: RichText (
+            text: const TextSpan( style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
+              children: <TextSpan>[
+                TextSpan( text: " Did the tick burrow into the skin?   Check if YES " ),
+                ],
+              ),
+            ),
           ),
-          Checkbox(
-            value: burrowedIn,
+          Checkbox( value: burrowedIn,
             onChanged: chkBxValueChanged,
           )
         ],
