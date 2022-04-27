@@ -118,5 +118,7 @@ class IntroductionState extends State<Introduction> {
   void _navToScreen4(BuildContext context) async {
     await Navigator.pushNamed(context, 'fourth');
   }
-} // end of DisplayImage class
-// --- end of display_file.dart
+  
+} // end of displayIntro
+
+// --- end of p1_introduction.dart
