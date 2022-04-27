@@ -80,6 +80,14 @@ void _onContactTapped( BuildContext context, Tick tappedContact) {
           children: <Widget> [
             Text( "Name of tick: " + tappedContact.commonName + "\n\nNow click: Male, Female, Larva, or Nymph\n", textScaleFactor: 1.5,),
             const RadioList(),
+            Padding( padding: const EdgeInsets.all(8.0),
+              child: SizedBox( width: 280,
+                child: ElevatedButton(
+                  child: const Text('THEN GO TO GEOLOCATOR'),
+                  onPressed: ( ) { _navToScreen3(context); },
+                  ),
+                ),
+              ),
             ],
           ),
         duration: const Duration( seconds: 8, ),
