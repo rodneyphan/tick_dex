@@ -49,7 +49,7 @@ class RiskAssessState extends State<RiskAssessment> {
         title: const Text(
           "TICK RISK ASSESSOR - Based on your input...",
           style: TextStyle(color: Colors.brown),
-          textScaleFactor: 1.7,
+          textScaleFactor: 1.4,
         ),
       ),
       body: Padding(
@@ -60,8 +60,8 @@ class RiskAssessState extends State<RiskAssessment> {
                 children: <Widget>[
                   Text(
                     "So you have encountered a " +
-                        tickList[tickIndex].commonName,
-                    textScaleFactor: 1.6,
+                        tickList[tickIndex].commonName + "   ",
+                    textScaleFactor: 1.2,
                   ),
                   SizedBox(
                       width: 100,
@@ -71,45 +71,32 @@ class RiskAssessState extends State<RiskAssessment> {
                 ],
               ),
               Text(
-                " and you believe it was a " + tickSexStage,
-                textScaleFactor: 1.6,
+                "\nand you believe it was a " + tickSexStage,
+                textScaleFactor: 1.2,
               ),
               Text(
-                "And this app geolocated your tick to a " +
-                    areaRisk +
-                    " area of the country for Lyme's Disease.\n",
-                textScaleFactor: 1.6,
+                "And this app geolocated your tick to a " + areaRisk + " area of the country for Lyme's Disease.\n",
+                textScaleFactor: 1.2,
               ),
               const BurrowedCheckBox(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  width: 250,
+              Padding( padding: const EdgeInsets.all(8.0),
+                child: SizedBox( width: 250,
                   child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.lightGreen)),
-                    child: const Text(
-                      'Continue to your overall risk assessment ...',
-                      style: TextStyle(color: Colors.brown),
-                    ),
-                    onPressed: () {
-                      assessTheOverallRisk(context, burrowedIn);
-                    },
+                    style: ButtonStyle( backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen)),
+                    child: const Text( 'Click to Continue to your assessment...',
+                      style: TextStyle(color: Colors.brown), ),
+                    onPressed: () { assessTheOverallRisk(context, burrowedIn); },
                   ),
                 ),
               ),
-              Row(
-                children: <Widget>[
+              Row( children: <Widget>[
                   const Text("So you, or a loved one, has"),
                   burrowedIn ? const Text(' ') : const Text('not '),
                   const Text("had a tick burrow it's head into the skin.\n"),
                 ],
               ),
-              Text(
-                  "The assessment of this app is that your overall risk of obtaining a tick-borne disease is " +
-                      overRisk +
-                      " based on inputed variables."),
+              Text("The assessment of this app is that your overall risk of obtaining a tick-borne disease is " +
+                      overRisk + " based on inputed variables."),
               const Text(
                   "Your overall risk of dying from a tick-borne illness is extremely small. "),
             ],
