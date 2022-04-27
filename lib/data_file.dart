@@ -48,7 +48,7 @@ List<Tick> tickList = [
       "Pacific Coast tick",
       "Dermacentor occidentalis",
       "Rocky Mountain Spotted Fever, Colorado Tick Fever, Tularemia, Q Fever",
-      " "),
+      "pac_coast_tick"),
   Tick(
       "Lone Star tick",
       "Amblyomma americanum",
