@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'data_file.dart';
 
+String heroTick = 'deer_tick'; // only for initialization
+
 class TickListDisplay extends StatefulWidget {
 
   const TickListDisplay ({Key? key}) : super(key: key);
@@ -19,8 +21,8 @@ class TickListState extends State<TickListDisplay> {
   @override
   Widget build (BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Identifier - Click on tick name. (Make note of sex/stage.)\nClick the picture to enlarge."),
+        appBar: AppBar( backgroundColor: Colors.yellowAccent,
+          title: const Text("TICK IDENTIFIER - Click pictures to enlarge and examine.\nMake note of sex/stage, THEN CLICK ON TICK'S NAME.", style: TextStyle( color: Colors.brown) ),
           ),
         body: Padding( padding: const EdgeInsets.all(8.0),
               child: DisplayTickList( )
@@ -37,7 +39,6 @@ class DisplayTickList extends StatelessWidget {
   DisplayTickList({Key? key}) : super(key: key);
 
   final List<Tick> listOfTicks = tickList;
-  int tappedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class DisplayTickList extends StatelessWidget {
   }
 
   Widget buildListBody(BuildContext context, int index) {
-
+    int tappedIndex = -1;
     String imageLocation = 'images/' + listOfTicks[index].picName + '.png';
 
     return
@@ -60,14 +61,19 @@ class DisplayTickList extends StatelessWidget {
               padding: const EdgeInsets.all(3.0),
               alignment: Alignment.centerLeft,
               child: SizedBox( width: 300, height: 300,
-                child: Expanded( child: Image.asset(imageLocation, height: 300, ), ),
+                child: GestureDetector( onTap: () { heroTick = listOfTicks[index].picName;
+                    Navigator.push( context, MaterialPageRoute(builder: (context) => const HeroPage() ), ); },
+                  child: Hero( tag: "enlarged_image",
+                    child: Expanded( child: Image.asset( imageLocation ), )
+                  ),
+                ),
               ),
             ),
           ),
           title: Text(listOfTicks[ index ].commonName + " (" +
-              listOfTicks[index].scientificName + ")", textScaleFactor: 1.2),
+              listOfTicks[index].scientificName + ")", textScaleFactor: 1.2, style: const TextStyle( color: Colors.brown) ),
           subtitle: Text(
-              "Associated illnesses: " + listOfTicks[index].diseases),
+              "Associated illnesses: " + listOfTicks[index].diseases, style: const TextStyle( color: Colors.green) ),
           onTap: ( ) => _onContactTapped( context, listOfTicks[index] ),
       );
   }
@@ -83,16 +89,16 @@ void _onContactTapped( BuildContext context, Tick tappedContact) {
             Padding( padding: const EdgeInsets.all(8.0),
               child: SizedBox( width: 280,
                 child: ElevatedButton(
-                  child: const Text('THEN GO TO GEOLOCATOR'),
+                  child: const Text('DONE: GO TO GEOLOCATOR'),
                   onPressed: ( ) { _navToScreen3(context); },
-                  ),
                 ),
               ),
+            ),
             ],
           ),
         duration: const Duration( seconds: 8, ),
         backgroundColor: Colors.lightGreen,
-        // action:
+        // action: _navToScreen3(context),
       )
       ); // showSnackBar
   }
@@ -142,8 +148,38 @@ void _onContactTapped( BuildContext context, Tick tappedContact) {
         ],
       );
   }
-
 }
 
+void _navToScreen3 ( BuildContext context) async {
+  await Navigator.pushNamed(context, 'third'); }
 
+class HeroPage extends StatelessWidget {
+  const HeroPage ({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+        body: GestureDetector( onTap: () { Navigator.pop( context ); },
+          child: Hero( tag: "enlarged-image",
+            child: Container( width: double.infinity, height: 450.0,
+              alignment: Alignment.topCenter,
+              child: Column( mainAxisSize: MainAxisSize.min, children: <Widget> [
+                heroImage( heroTick ),
+                const Text( "\nClick image to return to tick list" )
+                ],
+              ),
+            ),
+        )
+      )
+    );
+  }
+
+  Widget heroImage( String heroTick ) {
+    String imageLocation = 'images/' + heroTick + '.png';
+    return Container ( width: double.infinity, height: 400.0,
+      alignment: Alignment.topCenter,
+      child: Image.asset( imageLocation )
+      );
+  }
+}
