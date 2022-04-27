@@ -33,13 +33,24 @@ class RiskAssessState extends State<RiskAssessment> {
     _getLastKnownPosition();
   }
 
+  bool areaRisk() {
+    bool areaRiskTemp = false;
+    _getLastKnownPosition();
+    distOne = sqrt( pow( latitude - 41.94, 2 ) + pow( longitude - -77.26, 2 ) );
+    distTwo = sqrt( pow( latitude - 45.39, 2 ) + pow( longitude - -90.91, 2 ) );
+    if ((distOne < 10.5) || (distTwo < 6.5)) { areaRiskTemp = true; }
+      else { areaRiskTemp = false; }
+    return areaRiskTemp;
+  }
+
   String riskFromArea() {
+    highRiskArea = areaRisk();
     if (highRiskArea) {
-      areaRisk = 'moderate-risk';
+      areaRiskStr = 'moderate-risk';
     } else {
-      areaRisk = "very low-risk";
+      areaRiskStr = "very low-risk";
     }
-    return areaRisk;
+    return areaRiskStr;
   }
 
   @override
