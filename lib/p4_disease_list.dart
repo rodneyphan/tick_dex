@@ -43,15 +43,15 @@ class DisplayDiseaseList extends StatelessWidget {
     return Row(
       children: <Widget>[
         SizedBox(
-          width: 600,
+          width: 500,
           child: ListTile(
-            title: Text(listOfDiseases[index].disName, textScaleFactor: 1.5),
+            title: Text(listOfDiseases[index].disName, textScaleFactor: 1.2),
             subtitle: Text("  Cases in US for 2019:  " +
                 listOfDiseases[index].disCasesPerYear),
           ),
         ),
         ElevatedButton(
-          child: const Text("Go to website for more information"),
+          child: const Text("More Information"),
           onPressed: () => onBtnClicked(listOfDiseases[index].disURL),
         ),
       ],
