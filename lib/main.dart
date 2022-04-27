@@ -19,7 +19,7 @@ void main() async {
           measurementId: "G-3PQ2N4YP0B"),
     );
   }catch (e) {
-    Firebase.app();
+    Firebase.app("tick_dex");
   }
   runApp(const MyApp());
 }
