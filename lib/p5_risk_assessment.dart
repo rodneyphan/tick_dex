@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'data_file.dart';
 
-class RiskAssessment extends StatelessWidget {
+class RiskAssessment extends StatefulWidget {
 
-  RiskAssessment({Key? key}) : super(key: key);
+  const RiskAssessment ({Key? key}) : super(key: key);
+
+  @override
+  RiskAssessState createState() => RiskAssessState();
+}
+
+class RiskAssessState extends State<RiskAssessment> {
+
+  @override
+  void initState() { super.initState(); }
   final int tickIndex = 0;                  //  just for initialization, NEEDS TO BE READ FROM FIREBASE OR PASSED FROM PREVIOUS PAGE
   final String tickSexStage = 'nymph.';     //  just for initialization, NEEDS TO BE READ FROM FIREBASE OR PASSED FROM PREVIOUS PAGE
   final bool highRiskArea = false;          //  just for initialization, NEEDS TO BE READ FROM FIREBASE OR PASSED FROM PREVIOUS PAGE
@@ -113,4 +122,4 @@ class BurrowedCheckBoxState extends State<BurrowedCheckBox> {
 
 }
 
-//  TODO  Needs an reset/restart or exit button.
+//  TODO  Needs a reset/restart or exit button.
