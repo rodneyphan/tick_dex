@@ -58,25 +58,27 @@ class RiskAssessState extends State<RiskAssessment> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Text(
-                    "So you have encountered a " +
-                        tickList[tickIndex].commonName + "   ",
-                    textScaleFactor: 1.2,
-                  ),
-                  SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: Image.asset(
-                          "assets/images/" + tickList[tickIndex].picName + ".png")),
+                  Padding( padding: const EdgeInsets.all(8.0),
+                    child: RichText (
+                      text: const TextSpan( style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
+                      children: <TextSpan>[
+                        TextSpan(  text: "So you have encountered a " + tickList[tickIndex].commonName + "   " ) ],
+                          ),
+                      ),
+                    ),
+                  SizedBox( width: 100, height: 100,
+                      child: Image.asset( "assets/images/" + tickList[tickIndex].picName + ".png")),
                 ],
               ),
-              Text(
-                "\nand you believe it was a " + tickSexStage,
-                textScaleFactor: 1.2,
-              ),
-              Text(
-                "And this app geolocated your tick to a " + areaRisk + " area of the country for Lyme's Disease.\n",
-                textScaleFactor: 1.2,
+              Padding( padding: const EdgeInsets.all(8.0),
+                child: RichText (
+                text: const TextSpan( style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15 ),
+                  children: <TextSpan>[
+                    TextSpan( text: "\nand you believe it was a " + tickSexStage ),
+                    TextSpan( text: "And this app geolocated your tick to a " + areaRisk + " area of the country for Lyme's Disease.\n" ),
+                    ],
+                  ),
+                ),
               ),
               const BurrowedCheckBox(),
               Padding( padding: const EdgeInsets.all(8.0),
@@ -90,13 +92,13 @@ class RiskAssessState extends State<RiskAssessment> {
                 ),
               ),
               Row( children: <Widget>[
-                  const Text("So you, or a loved one, has"),
-                  burrowedIn ? const Text(' ') : const Text('not '),
-                  const Text("had a tick burrow it's head into the skin.\n"),
-                ],
+                const Text("So you, or a loved one, has"),
+                burrowedIn ? const Text(' ') : const Text('not '),
+                const Text("had a tick burrow it's head into the skin.\n"),
+              ],
               ),
               Text("The assessment of this app is that your overall risk of obtaining a tick-borne disease is " +
-                      overRisk + " based on inputed variables."),
+                  overRisk + " based on inputed variables."),
               const Text(
                   "Your overall risk of dying from a tick-borne illness is extremely small. "),
             ],
