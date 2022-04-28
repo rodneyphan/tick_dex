@@ -93,8 +93,8 @@ List<Disease> diseaseList = [
   Disease("Tularemia", "274",
       "https://www.mayoclinic.org/diseases-conditions/tularemia/symptoms-causes/syc-20378635"),
   Disease("Q Fever", "179", "https://www.cdc.gov/qfever/"),
-  Disease(
-      "Powassan Encephalitis", "43", "https://www.cdc.gov/powassan/index.html"),
+  Disease("Heartland Virus","about 50", "https://www.cdc.gov/heartland-virus/symptoms-treatment/index.html"),
+  Disease("Powassan Encephalitis", "43", "https://www.cdc.gov/powassan/index.html"),
   Disease("Tick-borne Relapsing Fever", "23",
       "https://doh.wa.gov/you-and-your-family/illness-and-disease-z/tick-borne-relapsing-fever"),
   Disease("Colorado Tick Fever", "6",
