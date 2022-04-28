@@ -74,12 +74,9 @@ class RiskAssessState extends State<RiskAssessment> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RichText(
-                    text: TextSpan(
+             Padding(padding: const EdgeInsets.all(8.0),
+                child: RichText(
+                   text: TextSpan(
                       style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -93,13 +90,9 @@ class RiskAssessState extends State<RiskAssessment> {
                     ),
                   ),
                 ),
-                SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Image.asset(
-                        "assets/images/" + tickList[tickIndex].picName + ".png")),
-              ],
-            ),
+             SizedBox( width: 100, height: 100,
+                    child: Image.asset( "assets/images/" + tickList[tickIndex].picName + ".png")
+                ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RichText(
