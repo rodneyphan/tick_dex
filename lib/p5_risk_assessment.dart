@@ -19,13 +19,17 @@ class RiskAssessState extends State<RiskAssessment> {
   int tickIndex = 0; //  just for initialization
   String tickSexStage = 'male'; //  just for initialization
   bool highRiskArea = false; //  just for initialization
-  String areaRisk = 'low-risk'; //  just for initialization
+  String areaRiskStr = 'low-risk'; //  just for initialization
   bool burrowedIn = false; //  just for initialization
   String burrowed = 'not '; //  just for initialization
   String overRisk = 'extremely small'; //  just for initialization
   double latitude = 0; //  just for initialization
   double longitude = 0; //  just for initialization
   bool showRisk = false;
+  double distOne = 0;
+  double distTwo = 0;
+  double radOne = 10.519;
+  double radTwo = 6.519;
 
   @override
   void initState() {
@@ -110,7 +114,7 @@ class RiskAssessState extends State<RiskAssessment> {
                             " tick.\n\n"),
                     TextSpan(
                         text: "Also this app geolocated your tick to a " +
-                            areaRisk +
+                            areaRiskStr +
                             " area of the country for Lyme's Disease.\n"),
                   ],
                 ),
