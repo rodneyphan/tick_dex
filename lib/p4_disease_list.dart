@@ -4,7 +4,7 @@ import 'data_file.dart';
 
 class DiseaseListDisplay extends StatefulWidget {
 
-  const DiseaseListDisplay({Key? key}) : super(key: key);
+  const DiseaseListDisplay ({Key? key}) : super(key: key);
 
   @override
   DiseaseListState createState() => DiseaseListState();
@@ -13,20 +13,26 @@ class DiseaseListDisplay extends StatefulWidget {
 class DiseaseListState extends State<DiseaseListDisplay> {
 
   @override
-  void initState() {
-    super.initState();
-  }
+  void initState() { super.initState(); }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build (BuildContext context) {
     return Scaffold(
-        appBar: AppBar(backgroundColor: Colors.yellowAccent,
-          title: const Text("Tick-Borne Illnesses in the US",
-              style: TextStyle(color: Colors.brown)),
-        ),
-        body: Padding(
+        appBar: AppBar( backgroundColor: Colors.amber,
+          title: const Text("Tick-Borne Illnesses in the US", style: TextStyle( fontWeight: FontWeight.bold, color: Colors.black,  ) ),
+          ),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage( "images/maps_of4diseases.png" ),
+              fit: BoxFit.cover,
+
+                ),
+            ),
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: DisplayDiseaseList()
+            child: DisplayDiseaseList( )
+            ),
         )
     );
   }
@@ -35,7 +41,7 @@ class DiseaseListState extends State<DiseaseListDisplay> {
 
 class DisplayDiseaseList extends StatelessWidget {
 
-  DisplayDiseaseList({Key? key}) : super(key: key);
+  DisplayDiseaseList ({Key? key}) : super(key: key);
 
   final List<Disease> listOfDiseases = diseaseList;
 
@@ -50,32 +56,26 @@ class DisplayDiseaseList extends StatelessWidget {
   Widget buildListBody(BuildContext context, int index) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(width: 380,
+      children: <Widget> [
+        SizedBox( width: 280,
           child: ListTile(
-              title: Text(listOfDiseases[ index ].disName, textScaleFactor: 1.3,
-                  style: const TextStyle(color: Colors.brown)),
-              subtitle: Text("  Cases in US for 2019:  " +
-                  listOfDiseases[index].disCasesPerYear,
-                  style: const TextStyle(color: Colors.green)),
-              trailing: ElevatedButton(
-                child: const Text("Open Website"),
-                onPressed: () => onBtnClicked(listOfDiseases[index].disURL),
-              ),
-          ),
+              title: Text(listOfDiseases[ index ].disName, textScaleFactor: 1.3, style: const TextStyle( fontWeight: FontWeight.bold, color: Colors.black) ),
+              subtitle: Text( " Cases in US for 2019: " + listOfDiseases[index].disCasesPerYear, style: const TextStyle( fontWeight: FontWeight.bold, color: Colors.black ) ),
+            ),
         ),
-
+        ElevatedButton(
+          child: const Text("WEBSITE"),
+          onPressed: () => onBtnClicked( listOfDiseases[index].disURL),
+        ),
       ],
     );
   }
 
-  onBtnClicked(String url) async {
-    if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
-    }
-    else {
-      throw 'Could not launch $url';
-    }
+  onBtnClicked (String url) async {
+
+    if ( await canLaunchUrlString(url) )
+    { await launchUrlString(url); }
+    else { throw 'Could not launch $url'; }
   }
 
 }
