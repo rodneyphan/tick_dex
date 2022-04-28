@@ -17,7 +17,7 @@ class RiskAssessment extends StatefulWidget {
 class RiskAssessState extends State<RiskAssessment> {
   final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
   int tickIndex = 0; //  just for initialization
-  String tickSexStage = 'male'; //  just for initialization
+  String tickSexStage = 'tick'; //  just for initialization
   bool highRiskArea = false; //  just for initialization
   String areaRiskStr = 'low-risk'; //  just for initialization
   bool burrowedIn = false; //  just for initialization
@@ -37,6 +37,7 @@ class RiskAssessState extends State<RiskAssessment> {
     _getValues();
     _getLastKnownPosition();
   }
+
 
   bool areaRisk() {
     bool areaRiskTemp = false;
@@ -202,6 +203,9 @@ class RiskAssessState extends State<RiskAssessment> {
     final position = await _geolocatorPlatform.getLastKnownPosition();
     latitude = position?.latitude ?? 0;
     longitude = position?.longitude ?? 0;
+    setState(() {
+
+    });
   }
 }
 
