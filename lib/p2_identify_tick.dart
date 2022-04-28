@@ -158,7 +158,7 @@ class _RadioListState extends State<RadioList> {
             onChanged: (Choice? value) {
               setState(() {
                 _choice = value;
-                _updateStage(_choice.toString());
+                _updateStage(_choice.toString().substring(7));
               });
             },
           ),

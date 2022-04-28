@@ -96,7 +96,7 @@ class RiskAssessState extends State<RiskAssessment> {
                     width: 100,
                     height: 100,
                     child: Image.asset(
-                        "images/" + tickList[tickIndex].picName + ".png")),
+                        "assets/images/" + tickList[tickIndex].picName + ".png")),
               ],
             ),
             Padding(
