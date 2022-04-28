@@ -43,7 +43,7 @@ class DisplayDiseaseList extends StatelessWidget {
     return Row(
       children: <Widget>[
         SizedBox(
-          width: 500,
+          width: 300,
           child: ListTile(
             title: Text(listOfDiseases[index].disName, textScaleFactor: 1.2),
             subtitle: Text("  Cases in US for 2019:  " +
