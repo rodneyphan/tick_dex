@@ -43,7 +43,7 @@ class RiskAssessState extends State<RiskAssessment> {
     _getLastKnownPosition();
     distOne = sqrt( pow( latitude - 41.94, 2 ) + pow( longitude - -77.26, 2 ) );
     distTwo = sqrt( pow( latitude - 45.39, 2 ) + pow( longitude - -90.91, 2 ) );
-    if ((distOne < 10.5) || (distTwo < 6.5)) { areaRiskTemp = true; }
+    if ((distOne < radOne) || (distTwo < radTwo)) { areaRiskTemp = true; }
       else { areaRiskTemp = false; }
     return areaRiskTemp;
   }
