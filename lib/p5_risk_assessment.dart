@@ -73,32 +73,42 @@ class RiskAssessState extends State<RiskAssessment> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-                 child: RichText(
-                 text: TextSpan(
-                 style: const TextStyle(
-                     color: Colors.black,
-                     fontWeight: FontWeight.bold,
-                     fontSize: 15),
-                 children: <TextSpan>[
-                    TextSpan( text: "  So you have encountered a " + tickList[tickIndex].commonName + ".")
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: "  So you have encountered a " +
+                                tickList[tickIndex].commonName +
+                                "   ")
                       ],
                     ),
                   ),
                 ),
-             SizedBox( width: 100, height: 100, 
-                    child: Image.asset( "images/" + tickList[tickIndex].picName + ".png")),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(
+                SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Image.asset(
+                        "images/" + tickList[tickIndex].picName + ".png")),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 15),
-                    children: <TextSpan>[
-                      TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
                         text: "\nand you believe it was a " +
                             tickSexStage +
                             " tick.\n\n"),

@@ -35,7 +35,7 @@ class IntroductionState extends State<Introduction> {
             child: SizedBox(
               width: 400.0,
               height: 350.0,
-              child: Image.asset('images/finger_with4ticks.png'),
+              child: Image.asset('assets/images/finger_with4ticks.png'),
             ),
           ),
           Padding(

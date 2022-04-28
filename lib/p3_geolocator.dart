@@ -172,11 +172,13 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
                   sizedBox,
                   FloatingActionButton(
                     child: const Icon(Icons.my_location),
+                    tooltip: 'Check Permission and Location',
                     onPressed: _getCurrentPosition,
                   ),
                   sizedBox,
                   FloatingActionButton(
                     child: const Icon(Icons.add_box_outlined),
+                    tooltip: 'Send Data and See Risk',
                     onPressed: _postData,
                   ),
                 ],
