@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 const String _indexPrefsKey = 'index_key';
 const String _stagePrefsKey = 'stage_key';
 
+bool? burrowedIn = false;
+
 class RiskAssessment extends StatefulWidget {
   const RiskAssessment({Key? key}) : super(key: key);
 
@@ -20,7 +22,6 @@ class RiskAssessState extends State<RiskAssessment> {
   String tickSexStage = 'tick'; //  just for initialization
   bool highRiskArea = false; //  just for initialization
   String areaRiskStr = 'low-risk'; //  just for initialization
-  bool burrowedIn = false; //  just for initialization
   String burrowed = 'not '; //  just for initialization
   String overRisk = 'extremely small'; //  just for initialization
   double latitude = 0; //  just for initialization
@@ -108,7 +109,7 @@ class RiskAssessState extends State<RiskAssessment> {
                             " tick.\n\n"),
                     TextSpan(
                         text: "Also this app geolocated your tick to a " +
-                            areaRiskStr +
+                            riskFromArea() +
                             " area of the country for Lyme's Disease.\n"),
                   ],
                 ),
@@ -144,7 +145,7 @@ class RiskAssessState extends State<RiskAssessment> {
   }
 
   Widget displayOverallRisk() {
-    final String overRisk = assessTheOverallRisk(context, burrowedIn);
+    final String overRisk = assessTheOverallRisk(context, burrowedIn!);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: RichText(
@@ -153,7 +154,7 @@ class RiskAssessState extends State<RiskAssessment> {
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
           children: <TextSpan>[
             const TextSpan(text: "So you, or a loved one, has"),
-            burrowedIn
+            burrowedIn!
                 ? const TextSpan(text: " ")
                 : const TextSpan(text: " not "),
             const TextSpan(
@@ -211,8 +212,6 @@ class BurrowedCheckBox extends StatefulWidget {
 
 class BurrowedCheckBoxState extends State<BurrowedCheckBox> {
   BurrowedCheckBoxState({Key? key});
-
-  bool? burrowedIn = false;
 
   @override
   Widget build(BuildContext context) {
