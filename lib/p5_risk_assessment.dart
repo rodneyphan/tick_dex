@@ -63,8 +63,8 @@ class RiskAssessState extends State<RiskAssessment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.yellowAccent,
+      appBar: AppBar( 
+        backgroundColor: Colors.amber,
         title: const Text(
           "TICK RISK ASSESSOR - Based on your input...",
           style: TextStyle(color: Colors.brown),
