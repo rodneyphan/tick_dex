@@ -71,7 +71,7 @@ class RiskAssessState extends State<RiskAssessment> {
           textScaleFactor: 1.2,
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
@@ -254,7 +254,7 @@ class HeroMap extends StatelessWidget {
         body: GestureDetector(onTap: () { Navigator.pop(context); },
             child: Hero(tag: "enlarged-map",
               child: Container(width: double.infinity, height: 432.0,
-                alignment: Alignment.topCenter,
+                alignment: Alignment.center,
                 child: Column( mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     heroImage("assets/images/lymedis_map.png"),
@@ -270,7 +270,7 @@ class HeroMap extends StatelessWidget {
   Widget heroImage(String heroMap) {
     return
       Container(width: double.infinity, height: 400.0,
-          alignment: Alignment.topCenter,
+          alignment: Alignment.bottomCenter,
           child: Image.asset(heroMap)
       );
   }
