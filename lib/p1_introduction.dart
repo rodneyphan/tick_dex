@@ -55,13 +55,13 @@ class IntroductionState extends State<Introduction> {
                           "this is not possible, to wear protective clothing while outdoors and to promptly remove ticks from your body.\n\nIf you have found a "
                           "tick on you or a loved one, this app will help you know and understand 'tick risks' based on the type of tick, diseases carried by "
                           "that tick, and where and when tick-borne disease is the most prevalent.\n\nClick on the IDENTIFY MY TICK button to start to access "
-                          "your risks.\n"),
+                          "your risks."),
                 ],
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(5.0),
             child: SizedBox(
               width: 190,
               child: ElevatedButton(
@@ -77,7 +77,7 @@ class IntroductionState extends State<Introduction> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(5.0),
             child: SizedBox(
               width: 190,
               child: ElevatedButton(
