@@ -24,7 +24,7 @@ class DiseaseListState extends State<DiseaseListDisplay> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage( "images/maps_of4diseases.png" ),
+              image: AssetImage( "assets/images/maps_of4diseases.png" ),
               fit: BoxFit.cover,
 
                 ),

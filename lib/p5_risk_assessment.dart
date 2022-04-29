@@ -18,14 +18,14 @@ class RiskAssessment extends StatefulWidget {
 
 class RiskAssessState extends State<RiskAssessment> {
   final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
-  int tickIndex = 0;   
-  String tickSexStage = 'tick';   
-  bool highRiskArea = false;   
-  String areaRiskStr = 'low-risk';   
-  String burrowed = 'not ';   
-  String overRisk = 'extremely small';   
-  double latitude = 0;   
-  double longitude = 0;   
+  int tickIndex = 0;
+  String tickSexStage = 'tick';
+  bool highRiskArea = false;
+  String areaRiskStr = 'low-risk';
+  String burrowed = 'not ';
+  String overRisk = 'extremely small';
+  double latitude = 0;
+  double longitude = 0;
   bool showRisk = false;
   double distOne = 0;
   double distTwo = 0;
@@ -63,7 +63,7 @@ class RiskAssessState extends State<RiskAssessment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( 
+      appBar: AppBar(
         backgroundColor: Colors.amber,
         title: const Text(
           "TICK RISK ASSESSOR - Based on your input...",
@@ -105,16 +105,16 @@ class RiskAssessState extends State<RiskAssessment> {
                   ],
                 ),
               ),
-            GestureDetector(behavior: HitTestBehavior.translucent, 
+            GestureDetector(behavior: HitTestBehavior.translucent,
               onTap: () {  },
               child: Container(width: 200, height: 140,
-                padding: const EdgeInsets.all(3.0), 
+                padding: const EdgeInsets.all(3.0),
                 alignment: Alignment.centerLeft,
                 child: SizedBox( width: 200, height: 200,
                   child: GestureDetector( onTap: () {
                     Navigator.push( context, MaterialPageRoute(builder: (context) => const HeroMap() ), ); },
                     child: Hero( tag: "enlarged_map",
-                      child: Expanded( child: Image.asset( "images/lymedis_map.png" ), )
+                      child: Expanded( child: Image.asset( "assets/images/lymedis_map.png" ), )
                       ),
                   ),
                 ),
@@ -123,7 +123,7 @@ class RiskAssessState extends State<RiskAssessment> {
             const BurrowedCheckBox(),
             Padding(
               padding: const EdgeInsets.all(8.0),
-                child: SizedBox( width: 300, 
+                child: SizedBox( width: 300,
                   child: ElevatedButton( style: ButtonStyle( backgroundColor: MaterialStateProperty.all<Color>( Colors.lightGreen)),
                     child: const Text( 'Continue to your assessment...', style: TextStyle(color: Colors.brown), ),
                     onPressed: () { setState(() { showRisk = true; }); }
@@ -257,7 +257,7 @@ class HeroMap extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: Column( mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    heroImage("images/lymedis_map.png"),
+                    heroImage("assets/images/lymedis_map.png"),
                     const Text("\nClick image to return to the risk assessment" )
                   ],
                 ),
