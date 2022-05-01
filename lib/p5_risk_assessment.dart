@@ -1,3 +1,5 @@
+// p5_risk_assessment.dart
+
 import 'package:flutter/material.dart';
 import 'data_file.dart';
 import 'dart:math';
@@ -40,9 +42,9 @@ class RiskAssessState extends State<RiskAssessment> {
   }
 
 
-  bool areaRisk() {
-    bool areaRiskTemp = false;
-    _getLastKnownPosition();
+  bool areaRisk() {   //  Uses longitude and latitude to calculate distance from (42, -77.3) and from (45, -92) the approximate centers of two circles
+    bool areaRiskTemp = false;  // Then these distances are used to tell if user is located with radii of these two circles and hence in high-risk zone
+    _getLastKnownPosition();    // (This of course is using units of long and lat, not miles or km, but it should be understood that this is a rough estimate.
     distOne = sqrt( pow( latitude - 42, 2 ) + pow( longitude - -77.3, 2 ) );
     distTwo = sqrt( pow( latitude - 45, 2 ) + pow( longitude - -92, 2 ) );
     if ((distOne < radOne) || (distTwo < radTwo)) { areaRiskTemp = true; }
@@ -55,7 +57,7 @@ class RiskAssessState extends State<RiskAssessment> {
     if (highRiskArea) {
       areaRiskStr = 'moderate-risk';
     } else {
-      areaRiskStr = "very low-risk";
+      areaRiskStr = "low-risk";
     }
     return areaRiskStr;
   }
@@ -167,9 +169,9 @@ class RiskAssessState extends State<RiskAssessment> {
   );
 }
 
-  String assessTheOverallRisk(context, bool burrowedIn) {
-    final String overallRisk;
-    if (burrowedIn) {
+  String assessTheOverallRisk(context, bool burrowedIn) {   // The algorithm used here can be adjusted to account for other variables, such as the sex or stage
+    final String overallRisk;                               // of the tick, how many hours the tick had been "burrowed in," other tick species and associated
+    if (burrowedIn) {                                       // diseases, the time of year, etc.
       if ((tickIndex == 0) || (tickIndex == 9)) {
         if (highRiskArea == true) {
           overallRisk = 'moderate';
@@ -201,7 +203,7 @@ class RiskAssessState extends State<RiskAssessment> {
   }
 }
 
-class BurrowedCheckBox extends StatefulWidget {
+class BurrowedCheckBox extends StatefulWidget {  // Handles checkbox to ask if user has tick that burrowed in or not.
   const BurrowedCheckBox({Key? key}) : super(key: key);
 
   @override
@@ -244,7 +246,7 @@ class BurrowedCheckBoxState extends State<BurrowedCheckBox> {
 
 }
 
-class HeroMap extends StatelessWidget {
+class HeroMap extends StatelessWidget {   // Expands the US map so that user can better judge his or her location relative to risk areas
   const HeroMap({Key? key}) : super(key: key);
 
   @override
