@@ -95,7 +95,7 @@ class RiskAssessState extends State<RiskAssessment> {
                 style: const TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
                 children: <TextSpan>[
                   TextSpan( text: "\nAnd you believe it was a " + tickSexStage + " tick.\n"),
-                  TextSpan( text: "Also this app geolocated your tick to a " + riskFromArea() + " area of the country for "
+                  TextSpan( text: "\nAlso this app geolocated your tick to a " + riskFromArea() + " area of the country for "
                     "Lyme's Disease, which is the disease that is the most prevalent with many times more cases and deaths than other "
                     "tick-borne diseases.\n"
                     "\nBelow is a map of the US with areas of high prevalence of Lyme's Disease shown in red and orange. Since Lyme's Disease is the most common "
@@ -149,7 +149,7 @@ class RiskAssessState extends State<RiskAssessment> {
                 ? const TextSpan(text: " ")
                 : const TextSpan(text: " not "),
               const TextSpan( text: "had a tick burrow it's head into the skin.\n"),
-              TextSpan( text: "The assessment of this app is that your overall risk of obtaining a tick-borne disease is " + overRisk +
+              TextSpan( text: "\nThe assessment of this app is that your overall risk of obtaining a tick-borne disease is " + overRisk +
                     " based on inputed variables.   Your overall risk of dying from a tick-borne illness is extremely small. "),
             ],
           ),
@@ -219,9 +219,8 @@ class BurrowedCheckBoxState extends State<BurrowedCheckBox> {
           text: const TextSpan(
             style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
             children: <TextSpan>[
-              TextSpan( text: "One important factor is whether the tick got a chance to burrow into the skin,\n" ),
-              TextSpan( text: "which means that the mouth or head is at least partially inside the person and\n" ),
-              TextSpan( text: "not just on the person."),
+              TextSpan( text: "One important factor is whether the tick got a chance to burrow into the skin, which means "
+                       "that the mouth or head is at least partially inside the person and not just on the person."),
             ],
           ),
         ),
